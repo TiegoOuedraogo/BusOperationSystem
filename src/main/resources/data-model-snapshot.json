@@ -1,0 +1,676 @@
+{
+  "snapshot": {
+    "created": "2024-10-20T22:16:36.757",
+    "database": {
+      "productVersion": "2024.2.3",
+      "shortName": "intellijPsiClass",
+      "majorVersion": "0",
+      "minorVersion": "0",
+      "user": "tiegoouedraogo",
+      "productName": "IDEA Data Grid Snapshot",
+      "url": "jpab?generationContext=72d53686-05ff-4b38-b1eb-9a9afa9a63c3"
+    },
+    "metadata": {
+      "generationContext": {
+        "dbmsType": "postgresql"
+      }
+    },
+    "objects": {
+      "liquibase.structure.core.Catalog": [
+        {
+          "catalog": {
+            "default": true,
+            "name": "JPA_BUDDY",
+            "snapshotId": "7ae7147"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Column": [
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "arrival_time",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7179",
+            "snapshotId": "7ae7186",
+            "type": {
+              "typeName": "DATETIME"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "bus_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7149",
+            "snapshotId": "7ae7151",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "bus_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7179",
+            "snapshotId": "7ae7182",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "bus_number",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7149",
+            "snapshotId": "7ae7152",
+            "type": {
+              "columnSize": "255!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "capacity",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7149",
+            "snapshotId": "7ae7153",
+            "type": {
+              "typeName": "INT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "departure_time",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7179",
+            "snapshotId": "7ae7185",
+            "type": {
+              "typeName": "DATETIME"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "location",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7155",
+            "snapshotId": "7ae7159",
+            "type": {
+              "columnSize": "255!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "route_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7161",
+            "snapshotId": "7ae7163",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "route_id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7ae7166",
+            "snapshotId": "7ae7168",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "route_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7179",
+            "snapshotId": "7ae7183",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "route_name",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7161",
+            "snapshotId": "7ae7164",
+            "type": {
+              "columnSize": "255!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "schedule_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7179",
+            "snapshotId": "7ae7181",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "stop_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7155",
+            "snapshotId": "7ae7157",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "stop_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7166",
+            "snapshotId": "7ae7170",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "stop_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7179",
+            "snapshotId": "7ae7184",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "stop_name",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7155",
+            "snapshotId": "7ae7158",
+            "type": {
+              "columnSize": "255!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "stop_order",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7ae7166",
+            "snapshotId": "7ae7169",
+            "type": {
+              "typeName": "INT"
+            }
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.ForeignKey": [
+        {
+          "foreignKey": {
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7ae7168"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7ae7175",
+            "name": "FK_ROUTE_STOP_ON_ROUTE",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7ae7163"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7ae7172",
+            "snapshotId": "7ae7171"
+          }
+        },
+        {
+          "foreignKey": {
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7ae7170"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7ae7175",
+            "name": "FK_ROUTE_STOP_ON_STOP",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7ae7157"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7ae7177",
+            "snapshotId": "7ae7176"
+          }
+        },
+        {
+          "foreignKey": {
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7ae7182"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7ae7189",
+            "name": "FK_SCHEDULES_ON_BUS",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7ae7151"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7ae7188",
+            "snapshotId": "7ae7187"
+          }
+        },
+        {
+          "foreignKey": {
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7ae7183"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7ae7189",
+            "name": "FK_SCHEDULES_ON_ROUTE",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7ae7163"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7ae7172",
+            "snapshotId": "7ae7190"
+          }
+        },
+        {
+          "foreignKey": {
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7ae7184"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7ae7189",
+            "name": "FK_SCHEDULES_ON_STOP",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7ae7157"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7ae7177",
+            "snapshotId": "7ae7191"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Index": [
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "bus_id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_bus",
+            "snapshotId": "7ae7150",
+            "table": "liquibase.structure.core.Table#7ae7149",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "stop_id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_bus_stop",
+            "snapshotId": "7ae7156",
+            "table": "liquibase.structure.core.Table#7ae7155",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "route_id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_busroute",
+            "snapshotId": "7ae7162",
+            "table": "liquibase.structure.core.Table#7ae7161",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "route_id"
+                }
+              },
+              {
+                "column": {
+                  "name": "stop_order"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_route_stop",
+            "snapshotId": "7ae7167",
+            "table": "liquibase.structure.core.Table#7ae7166",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "schedule_id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_schedules",
+            "snapshotId": "7ae7180",
+            "table": "liquibase.structure.core.Table#7ae7179",
+            "unique": true
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Schema": [
+        {
+          "schema": {
+            "catalog": "liquibase.structure.core.Catalog#7ae7147",
+            "default": true,
+            "snapshotId": "7ae7193"
+          }
+        },
+        {
+          "schema": {
+            "catalog": "liquibase.structure.core.Catalog#7ae7147",
+            "name": "nycmta",
+            "snapshotId": "7ae7148"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Table": [
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7ae7151",
+              "liquibase.structure.core.Column#7ae7152",
+              "liquibase.structure.core.Column#7ae7153"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7ae7150"
+            ]
+            ,
+            "name": "bus",
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7ae7154",
+            "schema": "liquibase.structure.core.Schema#7ae7148",
+            "snapshotId": "7ae7149"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7ae7163",
+              "liquibase.structure.core.Column#7ae7164"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7ae7162"
+            ]
+            ,
+            "name": "bus_route",
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7ae7165",
+            "schema": "liquibase.structure.core.Schema#7ae7148",
+            "snapshotId": "7ae7161"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7ae7157",
+              "liquibase.structure.core.Column#7ae7158",
+              "liquibase.structure.core.Column#7ae7159"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7ae7156"
+            ]
+            ,
+            "name": "bus_stop",
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7ae7160",
+            "schema": "liquibase.structure.core.Schema#7ae7148",
+            "snapshotId": "7ae7155"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7ae7170",
+              "liquibase.structure.core.Column#7ae7168",
+              "liquibase.structure.core.Column#7ae7169"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7ae7167"
+            ]
+            ,
+            "name": "route_stop",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#7ae7171",
+              "liquibase.structure.core.ForeignKey#7ae7176"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7ae7178",
+            "schema": "liquibase.structure.core.Schema#7ae7148",
+            "snapshotId": "7ae7166"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7ae7181",
+              "liquibase.structure.core.Column#7ae7182",
+              "liquibase.structure.core.Column#7ae7183",
+              "liquibase.structure.core.Column#7ae7184",
+              "liquibase.structure.core.Column#7ae7185",
+              "liquibase.structure.core.Column#7ae7186"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7ae7180"
+            ]
+            ,
+            "name": "schedules",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#7ae7187",
+              "liquibase.structure.core.ForeignKey#7ae7190",
+              "liquibase.structure.core.ForeignKey#7ae7191"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7ae7192",
+            "schema": "liquibase.structure.core.Schema#7ae7148",
+            "snapshotId": "7ae7179"
+          }
+        }
+      ]
+      
+    },
+    "referencedObjects": {
+      "liquibase.structure.core.Catalog": [
+        {
+          "catalog": {
+            "name": "",
+            "snapshotId": "7ae7174"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.PrimaryKey": [
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7ae7150",
+            "columns": [
+              "liquibase.structure.core.Column#7ae7151"
+            ]
+            ,
+            "name": "pk_bus",
+            "snapshotId": "7ae7154",
+            "table": "liquibase.structure.core.Table#7ae7149"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7ae7156",
+            "columns": [
+              "liquibase.structure.core.Column#7ae7157"
+            ]
+            ,
+            "name": "pk_bus_stop",
+            "snapshotId": "7ae7160",
+            "table": "liquibase.structure.core.Table#7ae7155"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7ae7162",
+            "columns": [
+              "liquibase.structure.core.Column#7ae7163"
+            ]
+            ,
+            "name": "pk_busroute",
+            "snapshotId": "7ae7165",
+            "table": "liquibase.structure.core.Table#7ae7161"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7ae7167",
+            "columns": [
+              "liquibase.structure.core.Column#7ae7168",
+              "liquibase.structure.core.Column#7ae7169"
+            ]
+            ,
+            "name": "pk_route_stop",
+            "snapshotId": "7ae7178",
+            "table": "liquibase.structure.core.Table#7ae7166"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7ae7180",
+            "columns": [
+              "liquibase.structure.core.Column#7ae7181"
+            ]
+            ,
+            "name": "pk_schedules",
+            "snapshotId": "7ae7192",
+            "table": "liquibase.structure.core.Table#7ae7179"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Schema": [
+        {
+          "schema": {
+            "catalog": "liquibase.structure.core.Catalog#7ae7174",
+            "name": "nycmta",
+            "snapshotId": "7ae7173"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Table": [
+        {
+          "table": {
+            "name": "bus",
+            "schema": "liquibase.structure.core.Schema#7ae7173",
+            "snapshotId": "7ae7188"
+          }
+        },
+        {
+          "table": {
+            "name": "bus_route",
+            "schema": "liquibase.structure.core.Schema#7ae7173",
+            "snapshotId": "7ae7172"
+          }
+        },
+        {
+          "table": {
+            "name": "bus_stop",
+            "schema": "liquibase.structure.core.Schema#7ae7173",
+            "snapshotId": "7ae7177"
+          }
+        },
+        {
+          "table": {
+            "name": "route_stop",
+            "schema": "liquibase.structure.core.Schema#7ae7173",
+            "snapshotId": "7ae7175"
+          }
+        },
+        {
+          "table": {
+            "name": "schedules",
+            "schema": "liquibase.structure.core.Schema#7ae7173",
+            "snapshotId": "7ae7189"
+          }
+        }
+      ]
+      
+    },
+    "snapshotControl": {
+      "snapshotControl": {
+        "includedType": [
+          "liquibase.structure.core.Catalog",
+          "liquibase.structure.core.Column",
+          "liquibase.structure.core.ForeignKey",
+          "liquibase.structure.core.Index",
+          "liquibase.structure.core.PrimaryKey",
+          "liquibase.structure.core.Schema",
+          "liquibase.structure.core.Sequence",
+          "liquibase.structure.core.Table",
+          "liquibase.structure.core.UniqueConstraint",
+          "liquibase.structure.core.View"
+        ]
+        
+      }
+    }
+  }
+}

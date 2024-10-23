@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- 1. Create schema if it does not exist -->
+    <changeSet id="0" author="tiegoouedraogo">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS nycmta;
+        </sql>
+    </changeSet>
+
+    <!-- 2. Create 'bus_route' table with auto-incremented 'route_id' -->
+    <changeSet id="1" author="tiegoouedraogo">
+        <createTable tableName="bus_route" schemaName="nycmta">
+            <column name="route_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="route_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- 3. Create 'bus_stop' table with auto-incremented 'stop_id' -->
+    <changeSet id="2" author="tiegoouedraogo">
+        <createTable tableName="bus_stop" schemaName="nycmta">
+            <column name="stop_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="stop_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- 4. Create 'bus' table with auto-incremented 'bus_id' -->
+    <changeSet id="3" author="tiegoouedraogo">
+        <createTable tableName="bus" schemaName="nycmta">
+            <column name="bus_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="bus_number" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="capacity" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- 5. Create 'route_stop' table with composite primary key (route_id, stop_order) -->
+    <changeSet id="4" author="tiegoouedraogo">
+        <createTable tableName="route_stop" schemaName="nycmta">
+            <column name="route_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="stop_order" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="stop_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- Add primary key constraint -->
+        <addPrimaryKey
+                tableName="route_stop"
+                schemaName="nycmta"
+                columnNames="route_id,stop_order"
+                constraintName="pk_route_stop"/>
+    </changeSet>
+
+    <!-- 6. Create 'schedules' table with auto-incremented 'schedule_id' -->
+    <changeSet id="5" author="tiegoouedraogo">
+        <createTable tableName="schedules" schemaName="nycmta">
+            <column name="schedule_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="bus_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="route_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="stop_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="departure_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="arrival_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- 7. Add Foreign Key Constraints -->
+    <changeSet id="6" author="tiegoouedraogo">
+        <addForeignKeyConstraint
+                baseTableName="route_stop"
+                baseColumnNames="route_id"
+                constraintName="fk_route_stop_on_route"
+                referencedTableName="bus_route"
+                referencedColumnNames="route_id"
+                baseTableSchemaName="nycmta"
+                referencedTableSchemaName="nycmta"/>
+    </changeSet>
+
+    <changeSet id="7" author="tiegoouedraogo">
+        <addForeignKeyConstraint
+                baseTableName="route_stop"
+                baseColumnNames="stop_id"
+                constraintName="fk_route_stop_on_stop"
+                referencedTableName="bus_stop"
+                referencedColumnNames="stop_id"
+                baseTableSchemaName="nycmta"
+                referencedTableSchemaName="nycmta"/>
+    </changeSet>
+
+    <changeSet id="8" author="tiegoouedraogo">
+        <addForeignKeyConstraint
+                baseTableName="schedules"
+                baseColumnNames="bus_id"
+                constraintName="fk_schedules_on_bus"
+                referencedTableName="bus"
+                referencedColumnNames="bus_id"
+                baseTableSchemaName="nycmta"
+                referencedTableSchemaName="nycmta"/>
+    </changeSet>
+
+    <changeSet id="9" author="tiegoouedraogo">
+        <addForeignKeyConstraint
+                baseTableName="schedules"
+                baseColumnNames="route_id"
+                constraintName="fk_schedules_on_route"
+                referencedTableName="bus_route"
+                referencedColumnNames="route_id"
+                baseTableSchemaName="nycmta"
+                referencedTableSchemaName="nycmta"/>
+    </changeSet>
+
+    <changeSet id="10" author="tiegoouedraogo">
+        <addForeignKeyConstraint
+                baseTableName="schedules"
+                baseColumnNames="stop_id"
+                constraintName="fk_schedules_on_stop"
+                referencedTableName="bus_stop"
+                referencedColumnNames="stop_id"
+                baseTableSchemaName="nycmta"
+                referencedTableSchemaName="nycmta"/>
+    </changeSet>
+
+</databaseChangeLog>

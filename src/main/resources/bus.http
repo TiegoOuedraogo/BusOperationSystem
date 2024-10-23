@@ -1,0 +1,32 @@
+
+###
+### CREATE A BUS
+POST localhost:8080/api/buses
+Content-Type: application/json
+
+    {
+        "busNumber": "B4",
+        "capacity": 23
+    }
+
+###
+### GET ALL BUSES
+GET localhost:8080/api/buses
+
+###
+### GET BUS BY ID
+GET localhost:8080/api/buses/4
+
+###
+### UPDATE BUS BY ID
+PUT localhost:8080/api/buses/4
+Content-Type: application/json
+
+    {
+       "busNumber": "5678",
+        "capacity": 60
+    }
+
+###
+### DELETE BUS BY ID
+DELETE localhost:8080/api/buses/4

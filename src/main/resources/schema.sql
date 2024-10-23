@@ -1,0 +1,58 @@
+-- CREATE SCHEMA IF NOT EXISTS nycmta;
+--
+-- CREATE TABLE nycmta.bus
+-- (
+--     bus_id     BIGINT NOT NULL,
+--     bus_number VARCHAR(255),
+--     capacity   INTEGER,
+--     CONSTRAINT pk_bus PRIMARY KEY (bus_id)
+-- );
+--
+-- CREATE TABLE nycmta.bus_route
+-- (
+--     route_id   BIGINT NOT NULL,
+--     route_name VARCHAR(255),
+--     CONSTRAINT pk_busroute PRIMARY KEY (route_id)
+-- );
+--
+-- CREATE TABLE nycmta.bus_stop
+-- (
+--     stop_id   BIGINT NOT NULL,
+--     stop_name VARCHAR(255),
+--     location  VARCHAR(255),
+--     CONSTRAINT pk_bus_stop PRIMARY KEY (stop_id)
+-- );
+--
+-- CREATE TABLE nycmta.route_stop
+-- (
+--     stop_id    BIGINT,
+--     route_id   BIGINT  NOT NULL,
+--     stop_order INTEGER NOT NULL,
+--     CONSTRAINT pk_route_stop PRIMARY KEY (route_id, stop_order)
+-- );
+--
+-- CREATE TABLE nycmta.schedules
+-- (
+--     schedule_id    BIGINT NOT NULL,
+--     bus_id         BIGINT,
+--     route_id       BIGINT,
+--     stop_id        BIGINT,
+--     departure_time TIMESTAMP WITHOUT TIME ZONE,
+--     arrival_time   TIMESTAMP WITHOUT TIME ZONE,
+--     CONSTRAINT pk_schedules PRIMARY KEY (schedule_id)
+-- );
+--
+-- ALTER TABLE nycmta.route_stop
+--     ADD CONSTRAINT FK_ROUTE_STOP_ON_ROUTE FOREIGN KEY (route_id) REFERENCES nycmta.bus_route (route_id);
+--
+-- ALTER TABLE nycmta.route_stop
+--     ADD CONSTRAINT FK_ROUTE_STOP_ON_STOP FOREIGN KEY (stop_id) REFERENCES nycmta.bus_stop (stop_id);
+--
+-- ALTER TABLE nycmta.schedules
+--     ADD CONSTRAINT FK_SCHEDULES_ON_BUS FOREIGN KEY (bus_id) REFERENCES nycmta.bus (bus_id);
+--
+-- ALTER TABLE nycmta.schedules
+--     ADD CONSTRAINT FK_SCHEDULES_ON_ROUTE FOREIGN KEY (route_id) REFERENCES nycmta.bus_route (route_id);
+--
+-- ALTER TABLE nycmta.schedules
+--     ADD CONSTRAINT  FK_SCHEDULES_ON_STOP FOREIGN KEY (stop_id) REFERENCES nycmta.bus_stop (stop_id);
