@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- All your data insertion changeSets here -->
+    <changeSet id="insert-bus-data" author="tiegoouedraogo">
+        <insert tableName="bus" schemaName="nycmta">
+            <column name="bus_number" value="MTA-1001"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="bus">
+            <column name="bus_number" value="MTA-1002"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="bus">
+            <column name="bus_number" value="MTA-1003"/>
+        </insert>
+    </changeSet>
+
+    <!-- Insert data for routes -->
+    <changeSet id="1729796694642-13" author="tiegoouedraogo" runOnChange="true">
+        <insert schemaName="nycmta" tableName="bus_route">
+            <column name="route_name" value="B41 - Flatbush Avenue"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="bus_route">
+            <column name="route_name" value="B44 - Nostrand Avenue"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="bus_route">
+            <column name="route_name" value="B35 - Church Avenue"/>
+        </insert>
+    </changeSet>
+
+    <!-- Insert data for bus stops -->
+    <changeSet id="1729796694642-14" author="tiegoouedraogo" runOnChange="true">
+        <insert schemaName="nycmta" tableName="bus_stop">
+            <column name="stop_name" value="Flatbush Av/Grand Army Plaza"/>
+            <column name="location" value="Flatbush Avenue and Grand Army Plaza, Brooklyn, NY"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="bus_stop">
+            <column name="stop_name" value="Nostrand Av/Church Av"/>
+            <column name="location" value="Nostrand Avenue and Church Avenue, Brooklyn, NY"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="bus_stop">
+            <column name="stop_name" value="Church Av/Utica Av"/>
+            <column name="location" value="Church Avenue and Utica Avenue, Brooklyn, NY"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="bus_stop">
+            <column name="stop_name" value="Fulton St/Brooklyn College"/>
+            <column name="location" value="Fulton Street and Brooklyn College, Brooklyn, NY"/>
+        </insert>
+    </changeSet>
+
+    <!-- Insert data for route stops with stop order -->
+    <changeSet id="1729796694642-15" author="tiegoouedraogo" runOnChange="true">
+        <insert schemaName="nycmta" tableName="route_stop">
+            <column name="route_id" value="1"/>
+            <column name="stop_id" value="1"/>
+            <column name="stop_order" value="1"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="route_stop">
+            <column name="route_id" value="1"/>
+            <column name="stop_id" value="2"/>
+            <column name="stop_order" value="2"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="route_stop">
+            <column name="route_id" value="2"/>
+            <column name="stop_id" value="3"/>
+            <column name="stop_order" value="1"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="route_stop">
+            <column name="route_id" value="3"/>
+            <column name="stop_id" value="4"/>
+            <column name="stop_order" value="1"/>
+        </insert>
+    </changeSet>
+
+    <!-- Insert data for schedules -->
+    <changeSet id="1729796694642-16" author="tiegoouedraogo" runOnChange="true">
+        <insert schemaName="nycmta" tableName="schedules">
+            <column name="bus_id" value="1"/>
+            <column name="route_id" value="1"/>
+            <column name="stop_id" value="1"/>
+            <column name="departure_time" value="2024-10-25T08:00:00"/>
+            <column name="arrival_time" value="2024-10-25T08:15:00"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="schedules">
+            <column name="bus_id" value="2"/> <!-- MTA-1002 -->
+            <column name="route_id" value="2"/> <!-- B44 -->
+            <column name="stop_id" value="3"/> <!-- Church Av/Utica Av -->
+            <column name="departure_time" value="2024-10-25T09:00:00"/>
+            <column name="arrival_time" value="2024-10-25T09:15:00"/>
+        </insert>
+        <insert schemaName="nycmta" tableName="schedules">
+            <column name="bus_id" value="3"/>
+            <column name="route_id" value="3"/>
+            <column name="stop_id" value="4"/>
+            <column name="departure_time" value="2024-10-25T10:00:00"/>
+            <column name="arrival_time" value="2024-10-25T10:20:00"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
+

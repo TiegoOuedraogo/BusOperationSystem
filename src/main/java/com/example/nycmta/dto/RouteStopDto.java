@@ -1,15 +1,16 @@
 package com.example.nycmta.dto;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+import lombok.*;
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BusStopRequestDto {
+@Builder
+public class RouteStopDto {
+    private Long stopId;
     private String stopName;
     private String location;
+    private Integer stopOrder;
+
 }
 

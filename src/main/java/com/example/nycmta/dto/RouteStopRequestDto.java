@@ -2,16 +2,14 @@ package com.example.nycmta.dto;
 
 import lombok.*;
 
-import java.util.List;
-
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BusStopDto {
+public class RouteStopRequestDto {
     private Long stopId;
-    private String stopName;
-    private String location;
+    private Long routeId;
+    private Integer stopOrder;
 }
 

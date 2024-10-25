@@ -6,8 +6,10 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class BusResponseDto {
     private Long busId;
     private String busNumber;
-    private Integer capacity;
+
 }
+

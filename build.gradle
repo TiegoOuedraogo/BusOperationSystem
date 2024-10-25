@@ -30,8 +30,9 @@ dependencies {
     implementation 'org.liquibase:liquibase-core'
     implementation 'org.hibernate.orm:hibernate-community-dialects:6.5.3.Final'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'io.springfox:springfox-swagger2:2.7.0'
-    implementation 'io.springfox:springfox-swagger-ui:2.7.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
     compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'

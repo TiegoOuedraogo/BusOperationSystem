@@ -2,18 +2,29 @@ package com.example.nycmta.dto;
 
 import lombok.*;
 
-@Setter
+import java.time.LocalDateTime;
+
+
 @Getter
-@AllArgsConstructor
+@Setter
 @NoArgsConstructor
-@ToString
-@Builder
 
 public class ScheduleResponseDto {
     private Long scheduleId;
-    private BusDto busDto;
-    private BusRouteResponseDto busRouteResponseDto;
-    private BusStopResponseDto busStopResponseDto;
-    private String departureTime;
-    private String arrivalTime;
+    private LocalDateTime departureTime;
+    private LocalDateTime arrivalTime;
+
+
+    @Builder
+    public ScheduleResponseDto(
+            Long scheduleId,
+            LocalDateTime departureTime,
+            LocalDateTime arrivalTime
+    ){
+        this.scheduleId = scheduleId;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+    }
+
 }
+

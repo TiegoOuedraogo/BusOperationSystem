@@ -5,7 +5,7 @@ POST localhost:8080/api/buses
 Content-Type: application/json
 
     {
-        "busNumber": "B4",
+        "busNumber": "B47",
         "capacity": 23
     }
 

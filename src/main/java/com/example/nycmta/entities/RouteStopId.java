@@ -1,54 +1,38 @@
 package com.example.nycmta.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+
 
 import java.io.Serializable;
 import java.util.Objects;
-
 @Embeddable
+
 public class RouteStopId implements Serializable {
-
+    @Column(name = "route_id")
     private Long routeId;
-    private Integer stopOrder;
 
-    public RouteStopId() {}
+    @Column(name = "stop_id")
+    private Long stopId;
 
-    public RouteStopId(Long routeId, Integer stopOrder) {
+    public RouteStopId(Long routeId, Long stopId) {
         this.routeId = routeId;
-        this.stopOrder = stopOrder;
+        this.stopId = stopId;
     }
 
-    public Long getRouteId() {
-        return routeId;
-    }
-
-    public void setRouteId(Long routeId) {
-        this.routeId = routeId;
-    }
-
-    public Integer getStopOrder() {
-        return stopOrder;
-    }
-
-    public void setStopOrder(Integer stopOrder) {
-        this.stopOrder = stopOrder;
+    public RouteStopId() {
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         RouteStopId that = (RouteStopId) o;
-
-        if (!Objects.equals(routeId, that.routeId)) return false;
-        return Objects.equals(stopOrder, that.stopOrder);
+        return Objects.equals(routeId, that.routeId) && Objects.equals(stopId, that.stopId);
     }
 
     @Override
     public int hashCode() {
-        int result = routeId != null ? routeId.hashCode() : 0;
-        result = 31 * result + (stopOrder != null ? stopOrder.hashCode() : 0);
-        return result;
+        return Objects.hash(routeId, stopId);
     }
 }

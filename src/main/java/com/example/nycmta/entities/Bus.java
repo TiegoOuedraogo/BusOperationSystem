@@ -5,13 +5,14 @@ import lombok.*;
 
 import java.util.List;
 
-@Entity
-@Table(name = "bus", schema = "nycmta")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
+@Table(name = "bus", schema = "nycmta")
+
 public class Bus {
 
     @Id
@@ -22,9 +23,6 @@ public class Bus {
     @Column(name = "bus_number", nullable = false, unique = true)
     private String busNumber;
 
-    @Column(name = "capacity", nullable = false)
-    private Integer capacity;
-
-    @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Schedule> schedules;
 }

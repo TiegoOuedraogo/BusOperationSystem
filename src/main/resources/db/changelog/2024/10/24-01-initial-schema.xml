@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- All your table creation changeSets here, e.g., -->
+    <changeSet id="create-bus-table" author="tiegoouedraogo">
+        <createTable tableName="bus" schemaName="nycmta">
+            <column name="bus_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_bus"/>
+            </column>
+            <column name="bus_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Create bus route table if not exists -->
+    <changeSet id="create-bus-route-table" author="tiegoouedraogo" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists schemaName="nycmta" tableName="bus_route"/>
+            </not>
+        </preConditions>
+        <createTable schemaName="nycmta" tableName="bus_route">
+            <column name="route_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_bus_route"/>
+            </column>
+            <column name="route_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Create bus stop table if not exists -->
+    <changeSet id="create-bus-stop-table" author="tiegoouedraogo" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists schemaName="nycmta" tableName="bus_stop"/>
+            </not>
+        </preConditions>
+        <createTable schemaName="nycmta" tableName="bus_stop">
+            <column name="stop_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_bus_stop"/>
+            </column>
+            <column name="stop_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Create route stop table if not exists -->
+    <changeSet id="create-route-stop-table" author="tiegoouedraogo" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists schemaName="nycmta" tableName="route_stop"/>
+            </not>
+        </preConditions>
+        <createTable schemaName="nycmta" tableName="route_stop">
+            <column name="stop_order" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="route_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="stop_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Create schedules table if not exists -->
+    <changeSet id="create-schedules-table" author="tiegoouedraogo" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists schemaName="nycmta" tableName="schedules"/>
+            </not>
+        </preConditions>
+        <createTable schemaName="nycmta" tableName="schedules">
+            <column name="schedule_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_schedules"/>
+            </column>
+            <column name="bus_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="route_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="stop_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="departure_time" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="arrival_time" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Add unique constraint to bus number -->
+    <changeSet id="add-unique-constraint-bus-number" author="tiegoouedraogo" runOnChange="true">
+        <addUniqueConstraint columnNames="bus_number" constraintName="uc_bus_bus_number" schemaName="nycmta" tableName="bus"/>
+    </changeSet>
+
+    <!-- Add foreign key constraints with checks if tables exist -->
+    <changeSet id="add-foreign-key-constraints" author="tiegoouedraogo">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <tableExists schemaName="nycmta" tableName="route_stop"/>
+                <tableExists schemaName="nycmta" tableName="bus_route"/>
+                <tableExists schemaName="nycmta" tableName="bus_stop"/>
+                <tableExists schemaName="nycmta" tableName="schedules"/>
+            </and>
+        </preConditions>
+        <!-- Add foreign key for route_id in route_stop -->
+        <addForeignKeyConstraint baseColumnNames="route_id"
+                                 baseTableName="route_stop"
+                                 baseTableSchemaName="nycmta"
+                                 constraintName="fk_route_stop_route"
+                                 referencedColumnNames="route_id"
+                                 referencedTableName="bus_route"
+                                 referencedTableSchemaName="nycmta"/>
+        <!-- Add foreign key for stop_id in route_stop -->
+        <addForeignKeyConstraint baseColumnNames="stop_id"
+                                 baseTableName="route_stop"
+                                 baseTableSchemaName="nycmta"
+                                 constraintName="fk_route_stop_stop"
+                                 referencedColumnNames="stop_id"
+                                 referencedTableName="bus_stop"
+                                 referencedTableSchemaName="nycmta"/>
+        <!-- Add foreign key for bus_id in schedules -->
+        <addForeignKeyConstraint baseColumnNames="bus_id"
+                                 baseTableName="schedules"
+                                 baseTableSchemaName="nycmta"
+                                 constraintName="fk_schedules_bus"
+                                 referencedColumnNames="bus_id"
+                                 referencedTableName="bus"
+                                 referencedTableSchemaName="nycmta"/>
+        <!-- Add foreign key for route_id in schedules -->
+        <addForeignKeyConstraint baseColumnNames="route_id"
+                                 baseTableName="schedules"
+                                 baseTableSchemaName="nycmta"
+                                 constraintName="fk_schedules_route"
+                                 referencedColumnNames="route_id"
+                                 referencedTableName="bus_route"
+                                 referencedTableSchemaName="nycmta"/>
+        <!-- Add foreign key for stop_id in schedules -->
+        <addForeignKeyConstraint baseColumnNames="stop_id"
+                                 baseTableName="schedules"
+                                 baseTableSchemaName="nycmta"
+                                 constraintName="fk_schedules_stop"
+                                 referencedColumnNames="stop_id"
+                                 referencedTableName="bus_stop"
+                                 referencedTableSchemaName="nycmta"/>
+    </changeSet>
+
+</databaseChangeLog>
+

@@ -5,15 +5,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ScheduleDto {
     private Long scheduleId;
-    private BusDto bustDto;
-    private BusRouteResponseDto busRouteResponseDto;
-    private BusStopResponseDto busStopResponseDto;
-    private String departureTime;
-    private String arrivalTime;
+    private Long busId;
+    private Long routeId;
+    private Long stopId;
+    private LocalDateTime departureTime;
+    private LocalDateTime arrivalTime;
 }
+

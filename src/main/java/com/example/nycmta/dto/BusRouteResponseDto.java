@@ -1,22 +1,20 @@
 package com.example.nycmta.dto;
 
-import com.example.nycmta.entities.Bus;
-import com.example.nycmta.entities.Schedule;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.*;
 
 import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Builder
 public class BusRouteResponseDto {
     private Long routeId;
-    private List<BusStopResponseDto> busStops;
-    private List<Bus> bus;
-    private List<Schedule> schedules;
+    private String routeName;
+    @NotEmpty(message = "At least one stop is required")
+    private List<RouteStopRequestDto> stops;
 
 }
+
